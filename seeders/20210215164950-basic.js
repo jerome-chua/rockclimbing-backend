@@ -17,7 +17,6 @@ module.exports = {
       },
     ];
 
-    // Insert categories before items because items reference categories
     const trips = await queryInterface.bulkInsert(
       'trips',
       tripsList,
@@ -26,10 +25,10 @@ module.exports = {
 
     const routes = [];
 
-    for (let i = 0; i < trips.length; i++) {
+    for (let i = 0; i < trips.length; i += 1) {
       const trip = trips[i];
 
-      for (let i = 0; i < 15; i++) {
+      for (let j = 0; j < 15; j += 1) {
         const noun = faker.company.bsNoun(); // Rowan Nikolaus
         const adjective = faker.commerce.productAdjective(); // Rowan Nikolaus
         const difficulty = difficulties[Math.floor(Math.random() * difficulties.length)];
