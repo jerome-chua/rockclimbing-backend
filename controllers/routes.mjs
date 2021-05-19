@@ -27,8 +27,6 @@ export default function initRoutesController(db) {
   };
 
   const addRoute = async (req, res) => {
-    console.log('new entry ===== ', req.body);
-
     try {
       const newRoute = await db.Route.create({
         name: req.body.name,
@@ -43,7 +41,6 @@ export default function initRoutesController(db) {
   };
 
   const addDifficulty = async (req, res) => {
-    console.log('req body ======', req.body);
     try {
       const updateDifficulty = await db.Route.update({
         difficulty: Number(req.body.difficulty),
