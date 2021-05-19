@@ -1,13 +1,15 @@
 // db is an argument to this function so
 // that we can make db queries inside
 export default function initRoutesController(db) {
-  const getRoutes = (req, res) => {
-    db.Route.findAll()
-      .then((routes) => {
-        console.log('/getRoutes sucess!: ======= see below\n', routes);
-        res.send({ routes });
-      })
-      .catch((error) => console.log(error));
+  const getRoutes = async (req, res) => {
+    try {
+      const routes = await db.Route.findAll();
+      console.log('routes: ------', routes);
+
+      res.send(routes);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return {
